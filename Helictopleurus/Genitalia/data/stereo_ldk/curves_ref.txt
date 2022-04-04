@@ -1,0 +1,3 @@
+Handle_Cup_Out	Handle_Cup_Out_Top	Handle_Cup_Out_Bottom
+Handle_Cup_In	Handle_Cup_In_Top	Handle_Cup_In_Bottom
+Side_Handle_In	Handle_Cup_In_Top	Handle_Cup_In_Bottom
