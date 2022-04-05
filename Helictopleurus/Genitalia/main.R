@@ -67,6 +67,9 @@ saveRDS(dt, 'data/saved/dt.RDS')
 semi.ldk0 <- digit.curves_List(dt$outl, nPoints=100)
 str(semi.ldk0)
 
+
+### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
+### Read file HERE                                                          ####
 # save
 #saveRDS(semi.ldk0, 'data/saved/semi.ldk0.RDS')
 # read
@@ -160,6 +163,12 @@ s4 %>% stack
 f4 <- efourier(s4, 10, norm=F)
 PCA(f4) %>% plot(morpho=T)
 
+
+
+#   ____________________________________________________________________________
+#   Dim Estimation and Phylo Inference                                      ####
+
+rstudioapi::navigateToFile("R/Dim_est.R")
 
 #   ____________________________________________________________________________
 #   Image Alignment                                                         ####

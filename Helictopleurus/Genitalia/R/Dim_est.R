@@ -1,43 +1,73 @@
 
+#   ____________________________________________________________________________
+#   Dim Estimation and Phylo Inference                                      ####
+
+# back to main
+rstudioapi::navigateToFile("main.R")
+
+##  ............................................................................
+##  Get Fourier XY data                                                     ####
+
 #-- calliper alighment
 s4 <- coo_aligncalliper(semi.out)
 s4 %>% stack
-f4 <- efourier(s4, 40, norm=F)
+f4 <- efourier(s4, 10, norm=F)
 PCA(f4) %>% plot(morpho=T)
+
 xyz <- as_df(f4)
-#-
+spp <- names(s4)
+str(xyz)
 
-ump <- umap(xyz, n_components = 2, n_neighbors = 2, learning_rate = 0.5, init = "spectral", n_epochs = 20)
+
+##  ............................................................................
+##  Estimate Dimension                                                      ####
+
+dim.mle <- mle_twonn(X = xyz)
+dim.lst <- linfit_twonn(X = xyz, trimmed = F, alpha_trimmed = 0)
+dim.mle
+dim.lst
+
+dim.est <- round(dim.mle[2],0)
+
+
+#   ____________________________________________________________________________
+#   UMAP Projection                                                         ####
+
+#ump <- umap(xyz, n_components = 3, n_neighbors =2, learning_rate = 0.5, bandwidth = 1, init = "spectral", n_epochs = 20)
+ump <- umap(xyz, n_components = 2, scale = T, n_neighbors =2, learning_rate = 0.5, bandwidth = 1, init = "random", n_epochs = 20)
+rownames(ump) <- names(s4)
 plot(ump)
-ump %>% as_tibble()
-
-#----
-iris30 <- iris[c(1:10, 51:60, 101:110), ]
-iris_umap <- umap(iris30, n_neighbors = 5, learning_rate = 0.5, init = "random", n_epochs = 20)
-plot(iris_umap)
-
-umap.out <- umap(dt, n_neighbors = 5, bandwidth = 1, min_dist=.1, spread = 1, learning_rate = 0.5, init = "spectral", n_components = 2)
-umap.out <-as_tibble(umap.out)
-umap.out <-mutate(umap.out, label=nn,  f.id=pars$f.id, k.id=pars$k.id)
-
-ggplot(data = umap.out, aes(x = V1, y = V2) )+
-  geom_point(aes(colour = as.character(f.id), size=2 )) +
-  geom_text(aes(label=label),hjust=.5, vjust=1)
+ump
 
 
-#--------
-mle_twonn(X = xyz)
-linfit_twonn(X = xyz, trimmed = F, alpha_trimmed = 0)
 
-#------
-Swissroll <- as_tibble(Swissroll_maker(N = 1000))
-mus_Swiss <- generate_mus(X = Swissroll)
+#   ____________________________________________________________________________
+#   Infer tree                                                             ####
+# BM tree inference using Phylip as#library(Rphylip)
 
-lin11 <- linfit_twonn(X = Swissroll, trimmed = F, alpha_trimmed = 0)
-lin12 <- linfit_twonn(X = Swissroll, trimmed = T, alpha_trimmed = 0.01)
+# set path to Phylip executables
+setPath(path='/Users/taravser/Documents/Soft/phylip-3.695/exe')
+#clearPath()
+
+rm(phy)
+phy <- Rcontml(ump, quiet = T)
+plot(phy)
+str(phy)
 
 
-dist_Eucl_Sw <- as.matrix(stats::dist(Swissroll))
-mle_twonn(X = Swissroll)
-mle_twonn(X = Swissroll, DM=dist_Eucl_Sw)
-mle_twonn(X = Swissroll[c(1:3),])
+
+#   ____________________________________________________________________________
+#   PCA                                                                     ####
+
+
+f1 <- efourier(semi.out, 10, norm=T)
+pca <- PCA(f1)
+pca %>% plot(morpho=T)
+str(pca)
+pca.mt <- pca$x[,1:2]
+plot(pca.mt)
+
+rm(phy)
+phylp <- Rcontml(pca.mt, path='/Users/taravser/Documents/Soft/phylip-3.695/exe')
+plot(phy)
+
