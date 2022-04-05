@@ -22,7 +22,9 @@
   'geomorph',
   'Morpho',
   'abind',
-  'tibble'
+  'tibble',
+  'intRinsic', # Intrinsic Dim
+  'uwot' # UMAP
 )
 
 # Install CRAN packages (if not already installed)
