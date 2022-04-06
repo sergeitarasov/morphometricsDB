@@ -43,7 +43,7 @@ ump
 
 #   ____________________________________________________________________________
 #   Infer tree                                                             ####
-# BM tree inference using Phylip as#library(Rphylip)
+# BM tree inference using Phylip as library(Rphylip)
 
 # set path to Phylip executables
 setPath(path='/Users/taravser/Documents/Soft/phylip-3.695/exe')
@@ -67,6 +67,7 @@ str(pca)
 pca.mt <- pca$x[,1:2]
 plot(pca.mt)
 
+# infer tree
 rm(phy)
 phylp <- Rcontml(pca.mt, path='/Users/taravser/Documents/Soft/phylip-3.695/exe')
 plot(phy)

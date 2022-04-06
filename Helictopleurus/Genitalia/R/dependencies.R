@@ -24,7 +24,8 @@
   'abind',
   'tibble',
   'intRinsic', # Intrinsic Dim
-  'uwot' # UMAP
+  'uwot', # UMAP
+  'Rphylip'
 )
 
 # Install CRAN packages (if not already installed)
