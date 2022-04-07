@@ -11,6 +11,8 @@
 #   ____________________________________________________________________________
 #   Morphometric Workflow                                                   ####
 
+# Federica edits this file
+
 project.dir <- getwd()
 source('R/dependencies.R')
 
