@@ -1,4 +1,4 @@
-Worflow in Ai:
+Workflow in Ai:
 
 1. Create new file in Ai
 2. Save it ti Ai folder (e.g, Genitalia.ai)
