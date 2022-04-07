@@ -19,6 +19,16 @@ spp <- names(s4)
 str(xyz)
 xyz
 
+#-- Procrustes alighment
+fgProc %>% Out %>% stack
+f3 <- efourier(fgProc %>% Out, 10, norm=F)
+PCA(f3) %>% plot(morpho=T)
+
+xyz <- as_df(f3)
+spp <- names(s4)
+str(xyz)
+xyz
+
 ##  ............................................................................
 ##  Estimate Dimension                                                      ####
 
@@ -34,7 +44,7 @@ dim.est <- round(dim.mle[2],0)
 #   UMAP Projection                                                         ####
 
 #ump <- umap(xyz, n_components = 3, n_neighbors =2, learning_rate = 0.5, bandwidth = 1, init = "spectral", n_epochs = 20)
-ump <- umap(xyz, n_components = 2, scale = T, n_neighbors =2, learning_rate = 0.5, bandwidth = 1, init = "random", n_epochs = 20)
+ump <- umap(xyz, n_components = 8, scale = F, n_neighbors =2, learning_rate = 0.5, bandwidth = 1, init = "spectral", n_epochs = 20)
 rownames(ump) <- names(s4)
 plot(ump)
 ump
@@ -69,6 +79,6 @@ plot(pca.mt)
 
 # infer tree
 rm(phy)
-phylp <- Rcontml(pca.mt, path='/Users/taravser/Documents/Soft/phylip-3.695/exe')
+phy <- Rcontml(pca.mt, path='/Users/taravser/Documents/Soft/phylip-3.695/exe')
 plot(phy)
 

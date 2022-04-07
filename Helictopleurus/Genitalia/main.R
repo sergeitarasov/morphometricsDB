@@ -113,7 +113,9 @@ semi.out %>%
 # semi.ldk0 # original sampled ldk array
 semi.out  # Momocs outline obj
 semi.out.ldk <- semi.out %$% l2a(coo) # Momocs outline obj -> back to ldk array
-semi.ldk <- Ldk(coo=semi.ldk0 %>% a2l) # Momocs ldk
+
+#semi.ldk <- Ldk(coo=semi.ldk0 %>% a2l) # Momocs ldk
+semi.ldk <- Ldk(coo=semi.ldk01 %>% a2l)
 
 # Procrustes superimposition using different methods
 # using package geomorph
