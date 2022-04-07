@@ -16,6 +16,12 @@ source('R/dependencies.R')
 
 
 #   ____________________________________________________________________________
+#   Adobe Illustrator for processing images                                 ####
+
+rstudioapi::navigateToFile("Ai/README_Ai.txt")
+
+
+#   ____________________________________________________________________________
 #   StereoMorph: Digitize Landmarks                                         ####
 
 # Go to the respective script
