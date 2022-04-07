@@ -64,27 +64,42 @@ saveRDS(dt, 'data/saved/dt.RDS')
 ##  Sample equdistant semilandmarks along outlines                          ####
 
 # the first ldk in each outline matrix is used as a starting point
-semi.ldk0 <- digit.curves_List(dt$outl, nPoints=100)
+semi.ldk0 <- digit.curves_List(dt$outl, nPoints=200)
 str(semi.ldk0)
 
 
 ### . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ..
 ### Read file HERE                                                          ####
 # save
-#saveRDS(semi.ldk0, 'data/saved/semi.ldk0.RDS')
+saveRDS(semi.ldk0, 'data/saved/semi.ldk0.RDS')
 # read
 semi.ldk0 <- readRDS('data/saved/semi.ldk0.RDS')
 
 
-# translate to Momocs object, outline + 1st ldk
-semi.out <- Momocs::Out(semi.ldk0, ldk=as.list(rep(1,dim(semi.ldk0)[3])))
-names(semi.out) <- dimnames(semi.ldk0)[[3]]
+# translate to Momocs object, outline + 1st ldk !!!! ERORS
+# semi.out <- Momocs::Out(semi.ldk0, ldk=as.list(rep(1,dim(semi.ldk0)[3])))
+# names(semi.out) <- dimnames(semi.ldk0)[[3]]
+# semi.out
+
+# Error in coo_check.Coo(Coo) : 13, 28 do not pass coo_check
+
+semi.ldk01 <- semi.ldk0[,,-c(13,28)]
+semi.out <- Momocs::Out(semi.ldk01, ldk=as.list(rep(1,dim(semi.ldk01)[3])))
+names(semi.out) <- dimnames(semi.ldk01)[[3]]
 semi.out
 
+#--------
+# we will need to repair!!!!!!!!!!
+# Error in coo_check.Coo(Coo) : 13, 28 do not pass coo_check
+dim(semi.ldk0)
+semi.ldk0[,,13]
+
+#------------
 saveRDS(semi.out, 'data/saved/semi.out.RDS')
 
 # Plot outlines and ldk
-semi.out %>% panel(names=TRUE, points=T)
+semi.out %>% panel(names=TRUE, points=T, points.cex = 10, points.pch = 9)
+inspect(semi.out)
 
 semi.out %>%
   coo_center %>% coo_scale %>%

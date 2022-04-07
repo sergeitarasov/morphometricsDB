@@ -17,7 +17,7 @@ PCA(f4) %>% plot(morpho=T)
 xyz <- as_df(f4)
 spp <- names(s4)
 str(xyz)
-
+xyz
 
 ##  ............................................................................
 ##  Estimate Dimension                                                      ####
