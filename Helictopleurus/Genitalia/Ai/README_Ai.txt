@@ -18,5 +18,5 @@ Workflow in Ai:
 
 Tips:
 
-1. Useful windiws: Window -> Links (+ Layers, Artboards).
+1. Useful windows: Window -> Links (+ Layers, Artboards).
 2. Consider using two windows. Window -> New Window.
