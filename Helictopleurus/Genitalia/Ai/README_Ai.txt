@@ -1,4 +1,5 @@
 Worflow in Ai:
+
 1. Create new file in Ai
 2. Save it ti Ai folder (e.g, Genitalia.ai)
 3. File -> Place, select images to palce (use im folder). Check Link box to have them unembeded
@@ -13,6 +14,9 @@ Worflow in Ai:
 12. You make Lock Images Layer and Outline them on the Outline Layer.
 13. To save Images and Outlines, go to File->Export->Export for Screens. Select appropriate options (image size, suffix. etc) and click Export Artboards.
 
+#########################
+
 Tips:
+
 1. Useful windiws: Window -> Links (Layers, Artboards)
 2. Consider using two windows. Window -> New Window
