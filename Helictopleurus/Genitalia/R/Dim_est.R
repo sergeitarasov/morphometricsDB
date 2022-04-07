@@ -44,7 +44,7 @@ dim.est <- round(dim.mle[2],0)
 #   UMAP Projection                                                         ####
 
 #ump <- umap(xyz, n_components = 3, n_neighbors =2, learning_rate = 0.5, bandwidth = 1, init = "spectral", n_epochs = 20)
-ump <- umap(xyz, n_components = 8, scale = F, n_neighbors =2, learning_rate = 0.5, bandwidth = 1, init = "spectral", n_epochs = 20)
+ump <- umap(xyz, n_components = 20, scale = F, n_neighbors =2, learning_rate = 0.5, bandwidth = 1, init = "spectral", n_epochs = 20)
 rownames(ump) <- names(s4)
 plot(ump)
 ump
@@ -63,6 +63,35 @@ rm(phy)
 phy <- Rcontml(ump, quiet = T)
 plot(phy)
 str(phy)
+
+
+#   ____________________________________________________________________________
+#   NJ                                                                      ####
+
+# NJ
+f <- function(x) nj(dist(x))
+# hclust
+f <- function(x) as.phylo(hclust(dist(x), "average"))
+
+tr <- f(ump)
+plot(tr)
+is.rooted(tr)
+
+# bootstrap
+
+bstrees <- boot.phylo(tr, ump, f, trees = TRUE, B = 100)$trees
+## get proportions of each clade
+clad <- prop.clades(tr, bstrees, rooted = T)
+## get proportions of each bipartition:
+boot <- prop.clades(tr, bstrees, rooted = F)
+
+layout(1)
+par(mar = rep(2, 4))
+plot(tr, main = "Clade Support Values")
+drawSupportOnEdges(boot)
+nodelabels(clad)
+legend("bottomleft", legend = c("Bipartitions", "Clades"), pch = 22,
+       pt.bg = c("green", "lightblue"), pt.cex = 2.5)
 
 
 

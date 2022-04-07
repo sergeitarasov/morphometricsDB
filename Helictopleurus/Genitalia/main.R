@@ -81,7 +81,8 @@ str(semi.ldk0)
 # save
 saveRDS(semi.ldk0, 'data/saved/semi.ldk0.RDS')
 # read
-semi.ldk0 <- readRDS('data/saved/semi.ldk0.RDS')
+#semi.ldk0 <- readRDS('data/saved/semi.ldk0.RDS')
+semi.ldk01 <- readRDS('data/saved/semi.ldk0.RDS')
 
 
 # translate to Momocs object, outline + 1st ldk !!!! ERORS
@@ -103,7 +104,8 @@ dim(semi.ldk0)
 semi.ldk0[,,13]
 
 #------------
-saveRDS(semi.out, 'data/saved/semi.out.RDS')
+#saveRDS(semi.out, 'data/saved/semi.out.RDS')
+semi.out <- readRDS('data/saved/semi.out.RDS')
 
 # Plot outlines and ldk
 semi.out %>% panel(names=TRUE, points=T, points.cex = 10, points.pch = 9)
