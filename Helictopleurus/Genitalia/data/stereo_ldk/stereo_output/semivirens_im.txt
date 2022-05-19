@@ -1,8 +1,8 @@
 <shapes type=list>
 	<scaling type=logical names=FALSE length=1 as.numeric=FALSE >NA</scaling>
 	<landmarks.pixel type=matrix rownames=TRUE colnames=FALSE nrow=2 ncol=2 as.numeric=TRUE >
-		L1	1199	753
-		L2	1317	746
+		L1	1199	746
+		L2	1316	739
 	</landmarks.pixel>
 </shapes>
 
