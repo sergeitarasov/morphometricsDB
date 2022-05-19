@@ -12,8 +12,7 @@ Workflow in Ai:
 10. Go to File -> Scripts -> OtherScripts, select  InteractiveRenameArtboards.jsx. Revome _im suffixes if needed.
 11. Create a new layer. So you will have two layers, one for images and one for outlines. You can name them accrodingly.
 12. You may lock Images Layer, and outline images on the Outline Layer.
-13. To save Images and Outlines, go to File->Export->Export for Screens. Select appropriate options (image size, suffix. etc) and click Export Artboards.
-
+ 
 #########################
 
 Tips:
