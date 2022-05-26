@@ -5,7 +5,7 @@ Workflow in Ai:
 3. Go to File -> Place, select images to palce (use im0 folder). Check 'Link' box to have them unembeded.
 4. Place imeges somewhere.
 5. Cklick on ArtBoard tool on Toolbox and then click on each image. So each image has a separate ArtBoard.
-6. Go to File -> Scripts -> OtherScripts, select UnlinkedFile2Arboard.jsx. This will assign to each artbord the original file's name.
+6. Go to File -> Scripts -> OtherScripts, select  UnlinkedFile2Arboard.jsx. This will assign to each artbord the original file's name.
 7. Select images and click Embede.
 8. Remove the deafault (empty) artboard.
 9. Rearrange Artboards using ArtBoard Window.

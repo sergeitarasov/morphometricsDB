@@ -1,0 +1,10 @@
+<shapes type=list>
+	<scaling type=logical names=FALSE length=1 as.numeric=FALSE >NA</scaling>
+	<landmarks.pixel type=matrix rownames=TRUE colnames=FALSE nrow=4 ncol=2 as.numeric=TRUE >
+		Top left	515	531
+		Top right	1498	528
+		Bottom left	641	810
+		Bottom right	1378	815
+	</landmarks.pixel>
+</shapes>
+
